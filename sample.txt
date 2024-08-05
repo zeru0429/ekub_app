@@ -1,0 +1,19 @@
+
+
+# install packages
+/**
+cloudlinux-selector install-modules --json--interpreter nodejs --user huludeig --app-root test.huludelala.com
+
+**/
+
+# activate dotenv
+/**
+source /home/huludeig/nodevenv/enat.ekub.huludelala.com/20/bin/activate && cd /home/huludeig/enat.ekub.huludelala.com
+
+**/
+
+# command for Cron Jobs to restart the node server
+/**
+/usr/bin/flock -n /tmp/mylockenv.lock ${HOME}/nodevenv/enat.ekub.huludelala.com//14/bin/node ${HOME} enat.ekub.huludelala.com//app.js>/dev/null 2>&1
+
+**/
