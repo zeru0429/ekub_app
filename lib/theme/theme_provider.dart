@@ -1,5 +1,5 @@
 import "package:ekub_app/theme/app_theme.dart";
-import "package:ekub_app/utils/Share_preference.dart";
+import "package:ekub_app/utils/share_preference.dart";
 import "package:flutter/material.dart";
 
 class ThemeProvider extends ChangeNotifier {

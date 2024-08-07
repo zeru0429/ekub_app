@@ -3,7 +3,9 @@ import 'package:ekub_app/features/dashbord/view/dashboard_screen.dart';
 import 'package:ekub_app/features/deposit/view/deposit_page.dart';
 import 'package:ekub_app/features/intro/intro_screen.dart';
 import 'package:ekub_app/features/loan/view/loan_screen.dart';
+import 'package:ekub_app/features/forget_password/view/forget_password.dart';
 import 'package:ekub_app/features/login/view/login_screen.dart';
+import 'package:ekub_app/features/reset_password/view/new_password.dart';
 import 'package:ekub_app/features/remaning_payment/view/remaining_payment_screen.dart';
 import 'package:ekub_app/features/splash/view/splash_screen.dart';
 import 'package:ekub_app/features/winner/view/winner_screen.dart';
@@ -30,6 +32,16 @@ GoRouter appRouter = GoRouter(
       path: '/login',
       name: 'login screen',
       builder: (context, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: '/forget_password',
+      name: 'forget password screen',
+      builder: (context, state) => const ForgetPassword(),
+    ),
+    GoRoute(
+      path: '/reset_password',
+      name: 'new password screen',
+      builder: (context, state) => const ResetPasswordScreen(),
     ),
     GoRoute(
       path: '/dashboard',

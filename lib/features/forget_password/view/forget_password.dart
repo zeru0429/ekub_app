@@ -1,22 +1,20 @@
 import 'package:ekub_app/common/messager/scaffold_messager.dart';
 import 'package:ekub_app/common/widgets/button/custom_button.dart';
 import 'package:ekub_app/common/widgets/input_fields/email_field.dart';
-import 'package:ekub_app/common/widgets/input_fields/password_field.dart';
 import 'package:ekub_app/utils/color_convertor.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgetPasswordState extends State<ForgetPassword> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
         title: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Text(
-            "Login ",
+            "Forget Password",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 30,
@@ -41,27 +39,40 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(
+                    left: 15,
+                    right: 15,
+                    bottom: 50,
+                  ),
+                  child: const Wrap(
+                    children: [
+                      Text(
+                        "Don’t worry. Enter your email and we’ll send you a link to reset your password.",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
                 EmailFieldWidget(
                   controller: _emailController,
                   hint: "example@example.com",
                   label: 'Email',
                 ),
                 const SizedBox(height: 10),
-                PasswordFieldWidget(
-                  controller: _passwordController,
-                  label: "Password",
-                  hint: "******",
-                ),
-                const SizedBox(height: 20),
                 RectangularButtonWidget(
-                  titile: "Login",
+                  titile: "Continue",
                   onTap: _submitForm,
                   textColor: Colors.white,
                   bgColor: changeColorFromHex("#7F3DFF"),
                 ),
                 TextButton(
                   onPressed: () {
-                    context.push("/forget_password");
+                    context.go('/forget_password');
                   },
                   child: Text(
                     "Forget Password?",
@@ -76,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Wrap(
                   children: [
                     const Text(
-                      "Do not have Account yet? ",
+                      "I do have an account? ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.grey,
@@ -86,10 +97,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     InkWell(
                       onTap: () {
-                        context.push('/signup');
+                        context.push('/login');
                       },
                       child: Text(
-                        "Sign up",
+                        "Sign In",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: changeColorFromHex("#7F3DFF"),
@@ -111,10 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Perform login logic here
-      print('Email: ${_emailController.text}');
-      print('Password: ${_passwordController.text}');
+      // Perform login logic her
       showMessage("login", context, MESSAGE_TYPE.SUCCESS);
+      context.push('/reset_password');
     }
   }
 }
