@@ -115,6 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
       print('Email: ${_emailController.text}');
       print('Password: ${_passwordController.text}');
       showMessage("login", context, MESSAGE_TYPE.SUCCESS);
+      context.go('/dashboard');
     }
   }
 }

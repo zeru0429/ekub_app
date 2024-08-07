@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 
 GoRouter appRouter = GoRouter(
   //initial location
-  initialLocation: '/',
+  initialLocation: '/dashboard',
   //redirect
   redirect: (context, state) {},
   // all app routes
@@ -46,7 +46,7 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/dashboard',
       name: 'dashboard screen',
-      builder: (context, state) => const DashboardScreen(),
+      builder: (context, state) => DashboardScreen(),
     ),
     GoRoute(
       path: '/category',
