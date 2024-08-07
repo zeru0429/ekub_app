@@ -17,3 +17,12 @@ source /home/huludeig/nodevenv/enat.ekub.huludelala.com/20/bin/activate && cd /h
 /usr/bin/flock -n /tmp/mylockenv.lock ${HOME}/nodevenv/enat.ekub.huludelala.com//14/bin/node ${HOME} enat.ekub.huludelala.com//app.js>/dev/null 2>&1
 
 **/
+
+
+
+# flutter command to build web app in specfic folder
+/**
+
+flutter build web --release --output-dir=huludelala/web/
+
+**/
