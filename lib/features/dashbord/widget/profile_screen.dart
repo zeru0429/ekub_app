@@ -1,6 +1,6 @@
+import 'package:ekub_app/features/dashbord/widget/single_row.dart';
 import 'package:ekub_app/utils/color_convertor.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -12,14 +12,15 @@ class ProfileScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+          padding: const EdgeInsets.only(top: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const CircleAvatar(
-                    radius: 50.0,
+                    radius: 40.0,
                     backgroundImage: NetworkImage(
                       'https://images.unsplash.com/photo-1722929606674-73c6e0bf7b17?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                     ),
@@ -75,161 +76,29 @@ class ProfileScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      //first row
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        padding: const EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 1,
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: changeColorFromHex("#EEE5FF"),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Icon(
-                                Icons.menu_book,
-                                size: 30,
-                                color: changeColorFromHex("#7F3DFF"),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              child: const Text(
-                                "Account",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      SingleRowWidgetInProfile(
+                        iconColor: changeColorFromHex("#7F3DFF"),
+                        iconBg: changeColorFromHex("#EEE5FF"),
+                        title: "Account",
+                        iconData: Icons.menu_book,
                       ),
-                      //second row
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        padding: const EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 1,
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: changeColorFromHex("#EEE5FF"),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Icon(
-                                Icons.settings,
-                                size: 30,
-                                color: changeColorFromHex("#7F3DFF"),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              child: const Text(
-                                "Setting",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      SingleRowWidgetInProfile(
+                        iconColor: changeColorFromHex("#7F3DFF"),
+                        iconBg: changeColorFromHex("#EEE5FF"),
+                        title: "Setting",
+                        iconData: Icons.settings,
                       ),
-                      // 3rd row
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        padding: const EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 1,
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: changeColorFromHex("#EEE5FF"),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Icon(
-                                Icons.settings,
-                                size: 30,
-                                color: changeColorFromHex("#7F3DFF"),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              child: const Text(
-                                "Setting",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      SingleRowWidgetInProfile(
+                        iconColor: changeColorFromHex("#7F3DFF"),
+                        iconBg: changeColorFromHex("#EEE5FF"),
+                        title: "Export",
+                        iconData: Icons.upload,
                       ),
-                      // logout
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        padding: const EdgeInsets.only(bottom: 10),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 1,
-                              color: Colors.grey.shade200,
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  color: changeColorFromHex("#FFE2E4"),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Icon(
-                                Icons.logout,
-                                size: 30,
-                                color: changeColorFromHex("#FD4654"),
-                              ),
-                            ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              child: const Text(
-                                "Logout",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      SingleRowWidgetInProfile(
+                        iconColor: changeColorFromHex("#FD4654"),
+                        iconBg: changeColorFromHex("#FFE2E4"),
+                        title: "Logout",
+                        iconData: Icons.logout,
                       ),
                     ],
                   ),
