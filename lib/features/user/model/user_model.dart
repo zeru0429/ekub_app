@@ -1,6 +1,6 @@
 import 'package:ekub_app/common/model/enums.dart';
 
-class User {
+class UserModel {
   final int id;
   final String email;
   final String password;
@@ -12,7 +12,7 @@ class User {
   final String lastName;
   final Status activeStatus;
 
-  User({
+  UserModel({
     required this.id,
     required this.email,
     required this.password,
@@ -25,8 +25,8 @@ class User {
     required this.activeStatus,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
       id: json['id'],
       email: json['email'],
       password: json['password'],

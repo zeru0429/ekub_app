@@ -29,7 +29,7 @@ class UserProvider {
   }
 
   //get all users
-  Future<Map<String, dynamic>> getSingleUsers(int id) async {
+  Future<Map<String, dynamic>> getSingleUser(int id) async {
     await ApiClient.updateHeadersWithToken('token');
     final url = Uri.parse('${ApiClient.baseUrl}user/get/$id');
     try {

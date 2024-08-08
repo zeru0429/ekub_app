@@ -1,18 +1,18 @@
-class Winners {
+class WinnerModel {
   final int id;
   final int lotId;
   final int registeredBy;
   final DateTime createdAt;
 
-  Winners({
+  WinnerModel({
     required this.id,
     required this.lotId,
     required this.registeredBy,
     required this.createdAt,
   });
 
-  factory Winners.fromJson(Map<String, dynamic> json) {
-    return Winners(
+  factory WinnerModel.fromJson(Map<String, dynamic> json) {
+    return WinnerModel(
       id: json['id'],
       lotId: json['lotId'],
       registeredBy: json['registeredBy'],
