@@ -1,37 +1,77 @@
 import 'package:ekub_app/common/widgets/button/dialog_button.dart';
 import 'package:ekub_app/common/widgets/text/dialog_titile.dart';
+import 'package:ekub_app/features/loan/bloc/index.dart';
 import 'package:ekub_app/features/loan/widget/add_loan.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class LoanScreen extends StatelessWidget {
+class LoanScreen extends StatefulWidget {
   const LoanScreen({super.key});
+
+  @override
+  State<LoanScreen> createState() => _LoanScreenState();
+}
+
+class _LoanScreenState extends State<LoanScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void _load() {
+    context.read<LoanBloc>().add(FetchLoanEvent(take: 10, skip: 0));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Text(
-              "Loan Page",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-                color: Colors.blueAccent,
+      body: BlocBuilder<LoanBloc, LoanState>(
+        builder: (cnx, currentState) {
+          if (currentState is UnLoanState) {
+            return const Center(
+              child: CircularProgressIndicator(color: Colors.amberAccent),
+            );
+          }
+          if (currentState is ErrorLoanState) {
+            return Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(currentState.errorMessage),
+                Padding(
+                  padding: const EdgeInsets.only(top: 32.0),
+                  child: GestureDetector(
+                    onTap: _load,
+                    child: Container(
+                      color: Colors.blue,
+                      child: const Text('reload'),
+                    ),
+                  ),
+                ),
+              ],
+            ));
+          }
+          if (currentState is InLoanState) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(currentState.loans.first.amount.toString()),
+                ],
               ),
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                _showDialog(context);
-              },
-              child: const Icon(Icons.add),
-            )
-          ],
-        ),
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
