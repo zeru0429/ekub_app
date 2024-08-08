@@ -1,6 +1,12 @@
+import 'package:ekub_app/features/category/view/category_screen.dart';
 import 'package:ekub_app/features/dashbord/view/dashboard_screen.dart';
 import 'package:ekub_app/features/dashbord/widget/bottom_nav_bar.dart';
 import 'package:ekub_app/features/dashbord/widget/profile_screen.dart';
+import 'package:ekub_app/features/deposit/view/deposit_screen.dart';
+import 'package:ekub_app/features/loan/view/loan_screen.dart';
+import 'package:ekub_app/features/lottery/view/lottery_screen.dart';
+import 'package:ekub_app/features/user/view/user_screen.dart';
+import 'package:ekub_app/features/winner/view/winner_screen.dart';
 import 'package:ekub_app/utils/color_convertor.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +21,14 @@ class _AdminLayoutState extends State<AdminLayout> {
   int _currentIndex = 0;
   final List<Widget> _pages = const [
     DashboardScreen(),
-    Text("data 1"),
-    Text("data 2"),
-    Text("data 3"),
+    CategoryScreen(),
+    LoanScreen(),
+    Text("data"),
+    DepositScreen(),
+    WinnerScreen(),
     ProfileScreen(),
+    LotteryScreen(),
+    UserScreen(),
   ];
   @override
   Widget build(BuildContext context) {

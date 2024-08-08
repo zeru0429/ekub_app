@@ -1,11 +1,35 @@
+import 'package:ekub_app/common/constant/constant.dart';
 import 'package:ekub_app/common/widgets/button/dialog_button.dart';
 import 'package:ekub_app/common/widgets/text/dialog_titile.dart';
-import 'package:ekub_app/features/lottery/widget/add_lottery.dart';
+import 'package:ekub_app/features/deposit/bloc/deposit_bloc.dart';
+import 'package:ekub_app/features/deposit/provider/deposit_provider.dart';
+import 'package:ekub_app/features/deposit/repository/deposit_repository.dart';
+import 'package:ekub_app/features/deposit/view/deposit_table.dart';
+import 'package:ekub_app/features/deposit/widget/add_deposit.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LotteryScreen extends StatelessWidget {
-  const LotteryScreen({super.key});
+class DepositScreen extends StatefulWidget {
+  const DepositScreen({super.key});
+
+  @override
+  State<DepositScreen> createState() => _DepositScreenState();
+}
+
+class _DepositScreenState extends State<DepositScreen> {
+  // provider
+  late DepositProvider depositProvider;
+  // repository
+  late DepositRepository depositRepository;
+  late DepositBloc depositBloc;
+  @override
+  void initState() {
+    depositProvider = DepositProvider(client: ApiClient.getClient());
+    depositRepository = DepositRepository(depositProvider: depositProvider);
+    depositBloc = DepositBloc(depositRepository: depositRepository);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +40,7 @@ class LotteryScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              "Lottory Page",
+              "Deposit Page",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
@@ -56,14 +80,14 @@ class LotteryScreen extends StatelessWidget {
             ),
           ],
           //  title
-          title: const DialogTitileWidget(title: "Add Lottory"),
+          title: const DialogTitileWidget(title: "Deposit now"),
           //  styling
           actionsAlignment: MainAxisAlignment.end,
           actionsPadding: const EdgeInsets.symmetric(vertical: 10),
           backgroundColor: ThemeData().colorScheme.surface,
           contentPadding: const EdgeInsets.all(10),
           // context
-          content: const AddLotteryWidget(),
+          content: const AddDepositWidget(),
         );
       },
     );

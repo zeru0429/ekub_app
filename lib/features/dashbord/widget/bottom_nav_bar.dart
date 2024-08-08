@@ -10,6 +10,10 @@ List<BottomNavigationBarItem> navItems = [
     label: "Category",
   ),
   const BottomNavigationBarItem(
+    icon: Icon(Icons.money_off, size: 26),
+    label: "Loan",
+  ),
+  const BottomNavigationBarItem(
     icon: Icon(Icons.add, size: 26),
     label: "Add",
   ),
@@ -18,7 +22,19 @@ List<BottomNavigationBarItem> navItems = [
     label: "Deposit",
   ),
   const BottomNavigationBarItem(
+    icon: Icon(Icons.wine_bar, size: 26),
+    label: "Winner",
+  ),
+  const BottomNavigationBarItem(
     icon: Icon(Icons.settings, size: 26),
     label: "Setting",
+  ),
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.label, size: 26),
+    label: "Lottory",
+  ),
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.account_box, size: 26),
+    label: "User",
   ),
 ];

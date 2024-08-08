@@ -1,6 +1,6 @@
 import 'package:ekub_app/features/category/view/category_screen.dart';
 import 'package:ekub_app/features/dashbord/view/dashboard_screen.dart';
-import 'package:ekub_app/features/deposit/view/deposit_page.dart';
+import 'package:ekub_app/features/deposit/view/deposit_screen.dart';
 import 'package:ekub_app/features/intro/intro_screen.dart';
 import 'package:ekub_app/features/loan/view/loan_screen.dart';
 import 'package:ekub_app/features/forget_password/view/forget_password.dart';
@@ -15,7 +15,7 @@ import 'package:go_router/go_router.dart';
 
 GoRouter appRouter = GoRouter(
   //initial location
-  initialLocation: '/',
+  initialLocation: '/admin_layout',
   //redirect
   redirect: (context, state) {},
   // all app routes
@@ -73,7 +73,7 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/deposit',
       name: 'deposit screen',
-      builder: (context, state) => const DepositPage(),
+      builder: (context, state) => const DepositScreen(),
     ),
     GoRoute(
       path: '/loan',
