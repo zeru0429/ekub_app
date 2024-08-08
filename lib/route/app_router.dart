@@ -9,11 +9,13 @@ import 'package:ekub_app/features/reset_password/view/new_password.dart';
 import 'package:ekub_app/features/remaning_payment/view/remaining_payment_screen.dart';
 import 'package:ekub_app/features/splash/view/splash_screen.dart';
 import 'package:ekub_app/features/winner/view/winner_screen.dart';
+import 'package:ekub_app/layout/admin_layout.dart';
+import 'package:ekub_app/layout/user_layout.dart';
 import 'package:go_router/go_router.dart';
 
 GoRouter appRouter = GoRouter(
   //initial location
-  initialLocation: '/dashboard',
+  initialLocation: '/',
   //redirect
   redirect: (context, state) {},
   // all app routes
@@ -46,7 +48,17 @@ GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/dashboard',
       name: 'dashboard screen',
-      builder: (context, state) => DashboardScreen(),
+      builder: (context, state) => const DashboardScreen(),
+    ),
+    GoRoute(
+      path: '/admin_layout',
+      name: 'admin layout',
+      builder: (context, state) => const AdminLayout(),
+    ),
+    GoRoute(
+      path: '/user_layout',
+      name: 'user layout',
+      builder: (context, state) => const UserLayout(),
     ),
     GoRoute(
       path: '/category',
