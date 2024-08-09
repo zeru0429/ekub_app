@@ -12,12 +12,14 @@ class DepositBloc extends Bloc<DepositEvent, DepositState> {
       : super(const InitialDepositState()) {
     //  logic of loading deposit state
     on<LoadDepositEvent>((event, emit) async {
+      print("0000000000000000000000000000");
       emit(LoadingDepositState());
       try {
         final deposits = await depositRepository.getDeposits(20, 0);
         print(deposits);
         emit(LoadedDepositState(deposits: deposits));
       } catch (e) {
+        print(e);
         emit(ErrorDepositState(error: e.toString()));
       }
     });

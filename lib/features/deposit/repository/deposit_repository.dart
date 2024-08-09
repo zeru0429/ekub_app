@@ -8,6 +8,7 @@ class DepositRepository {
   //get all list of deposits
   Future<List<DepositModel>> getDeposits(int take, int skip) async {
     final response = await depositProvider.getDeposits(skip, take);
+    print(response);
     return response['success']
         ? (response['data'] as List<dynamic>)
             .map((i) => DepositModel.fromJson(i))

@@ -9,6 +9,9 @@ import 'package:ekub_app/features/dashbord/view/dashboard_screen.dart';
 import 'package:ekub_app/features/dashbord/widget/bottom_nav_bar.dart';
 import 'package:ekub_app/features/dashbord/widget/profile_screen.dart';
 import 'package:ekub_app/features/deposit/bloc/deposit_bloc.dart';
+import 'package:ekub_app/features/deposit/bloc/deposit_state.dart';
+import 'package:ekub_app/features/deposit/provider/deposit_provider.dart';
+import 'package:ekub_app/features/deposit/repository/deposit_repository.dart';
 import 'package:ekub_app/features/deposit/view/deposit_screen.dart';
 import 'package:ekub_app/features/loan/bloc/index.dart';
 import 'package:ekub_app/features/loan/provider/loan_provider.dart';
@@ -60,6 +63,9 @@ class _AdminLayoutState extends State<AdminLayout> {
   // lottery
   late LotteryProvider _lotteryProvider;
   late LottoryRepository _lotteryRepository;
+  // deposit
+  late DepositProvider _depositProvider;
+  late DepositRepository _depositRepository;
 
   int _currentIndex = 0;
   final List<Widget> _pages = [
@@ -95,6 +101,10 @@ class _AdminLayoutState extends State<AdminLayout> {
     _loanProvider = LoanProvider(client: _client);
     _loanRepository = LoanRepository(loanProvider: _loanProvider);
 
+    // deposit
+    _depositProvider = DepositProvider(client: _client);
+    _depositRepository = DepositRepository(depositProvider: _depositProvider);
+
     super.initState();
   }
 
@@ -124,6 +134,11 @@ class _AdminLayoutState extends State<AdminLayout> {
           create: (context) => LotteryBloc(
             const UnLotteryState(),
             lotteryRepository: _lotteryRepository,
+          ),
+        ),
+        BlocProvider(
+          create: (context) => DepositBloc(
+            depositRepository: _depositRepository,
           ),
         ),
       ],

@@ -2,6 +2,7 @@ import 'package:ekub_app/common/constant/constant.dart';
 import 'package:ekub_app/common/widgets/button/dialog_button.dart';
 import 'package:ekub_app/common/widgets/text/dialog_titile.dart';
 import 'package:ekub_app/features/deposit/bloc/deposit_bloc.dart';
+import 'package:ekub_app/features/deposit/bloc/deposit_event.dart';
 import 'package:ekub_app/features/deposit/bloc/deposit_state.dart';
 import 'package:ekub_app/features/deposit/provider/deposit_provider.dart';
 import 'package:ekub_app/features/deposit/repository/deposit_repository.dart';
@@ -19,16 +20,9 @@ class DepositScreen extends StatefulWidget {
 }
 
 class _DepositScreenState extends State<DepositScreen> {
-  // provider
-  late DepositProvider depositProvider;
-  // repository
-  late DepositRepository depositRepository;
-  late DepositBloc depositBloc;
   @override
   void initState() {
-    depositProvider = DepositProvider(client: ApiClient.getClient());
-    depositRepository = DepositRepository(depositProvider: depositProvider);
-    depositBloc = DepositBloc(depositRepository: depositRepository);
+    _load();
     super.initState();
   }
 
@@ -80,7 +74,7 @@ class _DepositScreenState extends State<DepositScreen> {
   }
 
   void _load() {
-    // context.read<DepositBloc>().add(InitialDepositState());
+    context.read<DepositBloc>().add(LoadDepositEvent());
   }
 
   _showDialog(BuildContext context) {
