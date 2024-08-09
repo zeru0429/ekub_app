@@ -25,8 +25,8 @@ class CategoryProvider {
         return responseData;
       }
     } catch (e) {
+      print(e.toString());
       return {'success': false, 'message': e.toString()};
-      ;
     }
   }
 

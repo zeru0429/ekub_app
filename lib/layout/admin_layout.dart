@@ -90,7 +90,7 @@ class _AdminLayoutState extends State<AdminLayout> {
     _winnerRepository = WinnerRepository(winnerProvider: _winnerProvider);
     // lottory
     _lotteryProvider = LotteryProvider(client: _client);
-    _loanRepository = LoanRepository(loanProvider: _loanProvider);
+    _lotteryRepository = LottoryRepository(lotteryProvider: _lotteryProvider);
     // loan
     _loanProvider = LoanProvider(client: _client);
     _loanRepository = LoanRepository(loanProvider: _loanProvider);
