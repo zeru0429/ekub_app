@@ -11,7 +11,7 @@ class AddCateoryWidget extends StatefulWidget {
 
 class _AddCateoryWidgetState extends State<AddCateoryWidget> {
   final _formKey = GlobalKey<FormState>();
-  String cycle = "Daily"; // Ensure this matches one of the initial values
+  String cycle = "Daily";
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _commitionController = TextEditingController();
