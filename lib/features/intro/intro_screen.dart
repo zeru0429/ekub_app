@@ -1,5 +1,6 @@
 import 'package:ekub_app/common/widgets/button/custom_button.dart';
 import 'package:ekub_app/utils/color_convertor.dart';
+import 'package:ekub_app/utils/share_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -122,13 +123,16 @@ class IntroScreen extends StatelessWidget {
             // sign up button
             RectangularButtonWidget(
               titile: "SignUp",
-              onTap: () {},
+              onTap: () {
+                _handleFirstTimeRun();
+              },
               textColor: Colors.white,
               bgColor: changeColorFromHex("#7F3DFF"),
             ),
             RectangularButtonWidget(
               titile: "Login",
               onTap: () {
+                _handleFirstTimeRun();
                 context.push('/login');
               },
               textColor: changeColorFromHex("#7F3DFF"),
@@ -138,5 +142,9 @@ class IntroScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _handleFirstTimeRun() async {
+    await LocalDataStore.storeDataString('first_time', "True");
   }
 }
