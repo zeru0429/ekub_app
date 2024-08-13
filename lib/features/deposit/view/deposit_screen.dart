@@ -29,6 +29,11 @@ class _DepositScreenState extends State<DepositScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showDialog(context);
+        },
+      ),
       body: BlocBuilder<DepositBloc, DepositState>(
         builder: (cnx, currentState) {
           if (currentState is InitialDepositState) {

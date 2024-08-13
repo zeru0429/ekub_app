@@ -15,7 +15,7 @@ import 'package:go_router/go_router.dart';
 
 GoRouter appRouter = GoRouter(
   //initial location
-  initialLocation: '/admin_layout',
+  initialLocation: '/',
   //redirect
   redirect: (context, state) {},
   // all app routes

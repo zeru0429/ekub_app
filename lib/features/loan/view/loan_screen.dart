@@ -32,6 +32,11 @@ class _LoanScreenState extends State<LoanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showDialog(context);
+        },
+      ),
       body: BlocBuilder<LoanBloc, LoanState>(
         builder: (cnx, currentState) {
           if (currentState is UnLoanState) {

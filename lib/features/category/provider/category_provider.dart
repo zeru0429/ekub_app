@@ -11,21 +11,22 @@ class CategoryProvider {
   // get all category
   Future<Map<String, dynamic>> getAllCategory(int skip, int take) async {
     await ApiClient.updateHeadersWithToken('token');
-    final url = Uri.parse(
-        '${ApiClient.baseUrl}category/getAllCategory?take=$take&skip=$skip');
+    final url =
+        Uri.parse('${ApiClient.baseUrl}category/getAll?take=$take&skip=$skip');
+
     try {
       final response = await ApiClient.getClient().get(
         url,
         headers: ApiClient.headers,
       );
       final Map<String, dynamic> responseData = jsonDecode(response.body);
+
       if (response.statusCode == 200) {
         return responseData;
       } else {
         return responseData;
       }
     } catch (e) {
-      print(e.toString());
       return {'success': false, 'message': e.toString()};
     }
   }

@@ -32,6 +32,11 @@ class _WinnerScreenState extends State<WinnerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showDialog(context);
+        },
+      ),
       body: BlocBuilder<WinnerBloc, WinnerState>(
         builder: (cnx, currentState) {
           if (currentState is UnWinnerState) {

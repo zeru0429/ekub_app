@@ -12,12 +12,14 @@ class UserProvider {
   Future<Map<String, dynamic>> getAllUsers(int skip, int take) async {
     await ApiClient.updateHeadersWithToken('token');
     final url = Uri.parse('${ApiClient.baseUrl}user/get?take=$take&skip=$skip');
+
     try {
       final response = await ApiClient.getClient().get(
         url,
         headers: ApiClient.headers,
       );
       final Map<String, dynamic> responseData = jsonDecode(response.body);
+
       if (response.statusCode == 200) {
         return responseData;
       } else {

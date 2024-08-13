@@ -32,6 +32,11 @@ class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showDialog(context);
+        },
+      ),
       body: BlocBuilder<UserBloc, UserState>(
         builder: (cnx, currentState) {
           if (currentState is UnUserState) {

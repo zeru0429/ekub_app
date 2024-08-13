@@ -32,6 +32,11 @@ class _LotteryScreenState extends State<LotteryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showDialog(context);
+        },
+      ),
       body: BlocBuilder<LotteryBloc, LotteryState>(
         builder: (cnx, currentState) {
           if (currentState is UnLotteryState) {
