@@ -1,6 +1,8 @@
+// ignore_for_file: unnecessary_null_comparison, use_build_context_synchronously
+
 import 'package:ekub_app/utils/color_convertor.dart';
+import 'package:ekub_app/utils/share_preference.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,9 +19,19 @@ class _SplashScreenState extends State<SplashScreen> {
     _check();
   }
 
-  _check() {
-    Future.delayed(const Duration(seconds: 3)).then((_) {
-      context.pushReplacement('/intro');
+  _check() async {
+    Future.delayed(const Duration(seconds: 3)).then((_) async {
+      final firstTime = await LocalDataStore.getDataString('first_time');
+      if (firstTime == null) {
+        context.pushReplacement('/intro');
+      } else {
+        final token = await LocalDataStore.getDataString('token');
+        if (token == null) {
+          context.pushReplacement('/login');
+        } else {
+          context.pushReplacement('/admin_layout');
+        }
+      }
     });
   }
 
