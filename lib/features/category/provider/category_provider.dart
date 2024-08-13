@@ -63,13 +63,14 @@ class CategoryProvider {
         body: jsonString,
       );
       final Map<String, dynamic> responseData = jsonDecode(response.body);
-      if (response.statusCode == 200) {
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
         return responseData;
       } else {
-        return responseData;
+        return throw Exception(responseData['message']);
       }
     } catch (e) {
-      return {'success': false, 'message': e.toString()};
+      throw Exception(e);
     }
   }
 

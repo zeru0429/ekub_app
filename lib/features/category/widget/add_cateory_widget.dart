@@ -3,8 +3,24 @@ import 'package:ekub_app/common/widgets/input_fields/text_input_field.dart';
 import 'package:flutter/material.dart';
 
 class AddCateoryWidget extends StatefulWidget {
-  const AddCateoryWidget({super.key});
+  const AddCateoryWidget({
+    super.key,
+    required this.nameController,
+    required this.amountController,
+    required this.commitionController,
+    required this.totalCountController,
+    required this.durationController,
+    required this.formKey,
+    this.onChangedcollectionCycle,
+  });
 
+  final TextEditingController nameController;
+  final TextEditingController amountController;
+  final TextEditingController commitionController;
+  final TextEditingController totalCountController;
+  final TextEditingController durationController;
+  final GlobalKey formKey;
+  final Function(String)? onChangedcollectionCycle;
   @override
   State<AddCateoryWidget> createState() => _AddCateoryWidgetState();
 }
@@ -12,11 +28,6 @@ class AddCateoryWidget extends StatefulWidget {
 class _AddCateoryWidgetState extends State<AddCateoryWidget> {
   final _formKey = GlobalKey<FormState>();
   String cycle = "Daily";
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _commitionController = TextEditingController();
-  final TextEditingController _totalCountController = TextEditingController();
-  final TextEditingController _durationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,28 +39,28 @@ class _AddCateoryWidgetState extends State<AddCateoryWidget> {
             const SizedBox(height: 10),
             // Name
             TextInputFieldWidget(
-              controller: _nameController,
+              controller: widget.nameController,
               label: "Name",
               hint: "John",
               textInputType: TextInputType.name,
             ),
             // Amount
             TextInputFieldWidget(
-              controller: _amountController,
+              controller: widget.amountController,
               label: "Amount",
               hint: "100",
               textInputType: TextInputType.number,
             ),
             // Commission
             TextInputFieldWidget(
-              controller: _commitionController,
+              controller: widget.commitionController,
               label: "Commission",
               hint: "5%",
               textInputType: TextInputType.number,
             ),
             // Total Count
             TextInputFieldWidget(
-              controller: _totalCountController,
+              controller: widget.totalCountController,
               label: "Total Count",
               hint: "366",
               textInputType: TextInputType.number,
@@ -64,14 +75,15 @@ class _AddCateoryWidgetState extends State<AddCateoryWidget> {
                 setState(() {
                   cycle = val ?? "Daily";
                 });
+                widget.onChangedcollectionCycle!(cycle);
               },
             ),
             // Duration
             TextInputFieldWidget(
-              controller: _durationController,
+              controller: widget.durationController,
               label: "Duration",
               hint: "1 year",
-              textInputType: TextInputType.number,
+              textInputType: TextInputType.text,
             ),
           ],
         ),
