@@ -3,6 +3,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:ekub_app/features/category/bloc/index.dart';
 import 'package:ekub_app/features/category/repository/category_repository.dart';
+import 'package:ekub_app/utils/exception%20function.dart';
 
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final CategoryRepository categoryRepository;
@@ -25,9 +26,9 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       emit(const LoadingCategoryState());
       try {
         final result = await categoryRepository.createCategory(event.category);
-        emit(SucessState(message: result['message']));
+        emit(SucessCategoryState(message: result['message']));
       } catch (e) {
-        emit(ErrorCategoryState(e.toString()));
+        emit(ErrorCategoryState(extractErrorMessage(e.toString())));
       }
     });
 
@@ -37,7 +38,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       try {
         final result = await categoryRepository.updateCategory(
             event.category, event.category.id);
-        emit(SucessState(message: result['message']));
+        emit(SucessCategoryState(message: result['message']));
       } catch (e) {
         emit(ErrorCategoryState(e.toString()));
       }
@@ -48,7 +49,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       emit(const LoadingCategoryState());
       try {
         final result = await categoryRepository.deleteCategory(event.id);
-        emit(SucessState(message: result['message']));
+        emit(SucessCategoryState(message: result['message']));
       } catch (e) {
         emit(ErrorCategoryState(e.toString()));
       }

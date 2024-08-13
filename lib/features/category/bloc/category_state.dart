@@ -54,8 +54,8 @@ class LoadingCategoryState extends CategoryState {
 }
 
 // message state
-class SucessState extends CategoryState {
-  const SucessState({required this.message});
+class SucessCategoryState extends CategoryState {
+  const SucessCategoryState({required this.message});
   final String message;
 
   @override

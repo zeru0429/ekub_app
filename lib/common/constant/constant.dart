@@ -4,7 +4,7 @@ import 'package:ekub_app/utils/share_preference.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-  static String baseUrl = "https://enat.ekub.huludelala.com/api/";
+  static String baseUrl = "http://192.168.0.71:8888/api/";
   static http.Client client = http.Client();
 
   static http.Client getClient() {
